@@ -1,10 +1,10 @@
-import '../repositories/user_repository.dart';
 import '../entities/user.dart';
+import '../repositories/user_repository.dart';
 
 class UserService {
-  final UserRepository userRepository;
-
   UserService(this.userRepository);
+
+  final UserRepository userRepository;
 
   Future<User> fetchUserById(String id) {
     return userRepository.getUserById(id);

@@ -1,19 +1,22 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'user_repository.dart';
+import 'package:http/http.dart' as http;
 import '../models/user.dart';
+import 'user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  final String apiUrl;
-
   UserRepositoryImpl({required this.apiUrl});
+
+  final String apiUrl;
 
   @override
   Future<List<User>> getUsers() async {
-    final response = await http.get(Uri.parse('$apiUrl/users'));
+    final http.Response response = await http.get(Uri.parse('$apiUrl/users'));
     if (response.statusCode == 200) {
-      List<dynamic> jsonResponse = json.decode(response.body);
-      return jsonResponse.map((user) => User.fromJson(user)).toList();
+      final List<dynamic> jsonResponse =
+          json.decode(response.body) as List<dynamic>;
+      return jsonResponse
+          .map((dynamic user) => User.fromJson(user as Map<String, dynamic>))
+          .toList();
     } else {
       throw Exception('Failed to load users');
     }
@@ -21,9 +24,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<User> getUserById(int id) async {
-    final response = await http.get(Uri.parse('$apiUrl/users/$id'));
+    final http.Response response =
+        await http.get(Uri.parse('$apiUrl/users/$id'));
     if (response.statusCode == 200) {
-      return User.fromJson(json.decode(response.body));
+      return User.fromJson(json.decode(response.body) as Map<String, dynamic>);
     } else {
       throw Exception('Failed to load user');
     }
@@ -31,7 +35,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> createUser(User user) async {
-    final response = await http.post(
+    final http.Response response = await http.post(
       Uri.parse('$apiUrl/users'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -45,7 +49,7 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> updateUser(User user) async {
-    final response = await http.put(
+    final http.Response response = await http.put(
       Uri.parse('$apiUrl/users/${user.id}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -59,7 +63,8 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> deleteUser(int id) async {
-    final response = await http.delete(Uri.parse('$apiUrl/users/$id'));
+    final http.Response response =
+        await http.delete(Uri.parse('$apiUrl/users/$id'));
     if (response.statusCode != 200) {
       throw Exception('Failed to delete user');
     }
