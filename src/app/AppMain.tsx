@@ -1,6 +1,24 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../shared/tanstackquery/tanstackQuery';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RootStackParamList, RouteNames } from '../../routes';
+import LoginScreen from '../screens/login/index';
+import { NavigationContainer } from '@react-navigation/native';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function main() {
-  return <QueryClientProvider client={queryClient}></QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name={RouteNames.LOGIN}
+            component={LoginScreen}
+            // options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
+  );
 }
