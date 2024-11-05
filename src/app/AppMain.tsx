@@ -12,11 +12,7 @@ export default function main() {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name={RouteNames.LOGIN}
-            component={LoginScreen}
-            // options={{ headerShown: false }}
-          />
+          <Stack.Screen name={RouteNames.LOGIN} component={LoginScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>
