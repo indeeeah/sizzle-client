@@ -25,6 +25,7 @@
       "favicon": "./assets/favicon.png"
     },
     "scheme": "sizzle-client",
-    "plugins": ["expo-router"]
-  }
+    "plugins": ["expo-router", "expo-font"]
+  },
+  "assets": ["./assets/fonts/"]
 }
