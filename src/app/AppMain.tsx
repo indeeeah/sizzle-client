@@ -2,7 +2,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../shared/tanstackquery/tanstackQuery';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList, RouteNames } from '../../routes';
-import LoginScreen from '../screens/login/index';
+import JoinScreen from '../screens/join/index';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -13,8 +13,8 @@ export default function main() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name={RouteNames.LOGIN}
-            component={LoginScreen}
+            name={RouteNames.JOIN}
+            component={JoinScreen}
             options={{
               headerShown: false,
             }}
