@@ -24,7 +24,7 @@ export default function App() {
 
   const customTextProps = {
     style: {
-      fontFamily: 'notosans',
+      fontFamily: 'pretendard',
     },
   };
   setCustomText(customTextProps);
