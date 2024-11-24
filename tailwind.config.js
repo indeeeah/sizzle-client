@@ -50,6 +50,9 @@ module.exports = {
         darkGray: '#E1E1E1',
         deepGray: '#989898',
       },
+      extend: {
+        opacity: ['disabled'],
+      },
     },
   },
   plugins: [],

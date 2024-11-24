@@ -14,6 +14,7 @@ type Props = {
   title: string;
   description: string;
   onsubmit: () => void;
+  disabled?: boolean;
   children: ReactNode;
 };
 
@@ -22,6 +23,7 @@ export default function JoinForm({
   title = '',
   description = '',
   onsubmit,
+  disabled,
   children,
 }: Props) {
   return (
@@ -52,8 +54,9 @@ export default function JoinForm({
         }
       >
         <TouchableOpacity
-          className="rounded-full overflow-hidden disabled:bg-gray-400 bg-black"
-          onPress={() => onsubmit}
+          className={`rounded-full overflow-hidden ${disabled ? 'bg-divider' : 'bg-black'}`}
+          onPress={onsubmit}
+          disabled={disabled}
         >
           <Text className="text-white text-center text-title3 font-bold py-3">
             다음
