@@ -19,7 +19,7 @@ type Props = {
 };
 
 export default function JoinForm({
-  icon = '',
+  icon = 'email',
   title = '',
   description = '',
   onsubmit,

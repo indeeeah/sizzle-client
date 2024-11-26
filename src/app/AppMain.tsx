@@ -17,6 +17,7 @@ export default function main() {
             component={JoinScreen}
             options={{
               headerShown: false,
+              title: '회원가입',
             }}
           />
         </Stack.Navigator>

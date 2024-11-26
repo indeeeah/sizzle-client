@@ -12,10 +12,9 @@ const initialState: User = {
   password: '',
 };
 
-const joinStore = create(set => ({
+const joinStore = create<User>(set => ({
   ...initialState,
-  setField: (field: keyof typeof initialState, value: any) =>
-    set({ [field]: value }),
+  setField: (field, value) => set({ [field]: value }),
 }));
 
 export default joinStore;

@@ -1,13 +1,13 @@
 import React, { forwardRef, memo } from 'react';
 import { TextInput } from 'react-native';
 
-type InputProps = React.HTMLProps<HTMLInputElement>;
+type InputProps = React.TextInput<HTMLInputElement>;
 
 type Props = InputProps & {
   className?: string;
 };
 
-const Input = forwardRef<HTMLInputElement, React.PropsWithChildren<Props>>(
+const Input = forwardRef<InputProps, React.PropsWithChildren<Props>>(
   ({ ...props }, ref) => {
     const { className } = props;
 

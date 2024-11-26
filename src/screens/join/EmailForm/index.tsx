@@ -6,6 +6,7 @@ import EamilForm from '../../../shared/join/email';
 
 export default function EamilPage() {
   const { setField } = useStore(joinStore);
+
   const handleEmail = (email: string) => {
     setField('email', email);
   };

@@ -39,7 +39,6 @@ export default function EamilForm({ onSubmit }: Props) {
           type="email"
           placeholder="이메일 주소"
           autoCapitalize="none"
-          returnKeyType="next"
           inputMode="email"
           autoFocus
           onChange={handleEmail}
