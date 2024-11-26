@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
+import { NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import JoinForm from '../../../widgets/ui/joinForm';
 import Input from '../../ui/Input';
 
@@ -11,7 +12,9 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export default function EamilForm({ onSubmit }: Props) {
   const [email, setEmail] = useState('');
 
-  const handleEmail = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleEmail = (
+    event: NativeSyntheticEvent<TextInputChangeEventData>,
+  ) => {
     const { text } = event.nativeEvent;
     const isValidEmail = EMAIL_REGEX.test(text);
 

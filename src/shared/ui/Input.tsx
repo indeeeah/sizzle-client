@@ -1,7 +1,8 @@
 import React, { forwardRef, memo } from 'react';
 import { TextInput } from 'react-native';
 
-type InputProps = React.TextInput<HTMLInputElement>;
+//TODO: TextInput type any 제거 해야 합니다.
+type InputProps = any;
 
 type Props = InputProps & {
   className?: string;

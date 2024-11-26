@@ -8,6 +8,7 @@ export default function EamilPage() {
   const { setField } = useStore(joinStore);
 
   const handleEmail = (email: string) => {
+    console.log('email', email);
     setField('email', email);
   };
 

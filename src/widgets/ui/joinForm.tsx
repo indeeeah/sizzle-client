@@ -10,7 +10,7 @@ import {
 import { STATUSBAR_HEIGHT } from '../../shared/constans';
 
 type Props = {
-  icon: string;
+  icon: keyof typeof Fontisto.glyphMap;
   title: string;
   description: string;
   onsubmit: () => void;

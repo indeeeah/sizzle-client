@@ -1,6 +1,10 @@
 import { create } from 'zustand';
 import { User } from '../../entities/user';
 
+type UserField = {
+  setField: (field: keyof User, value: string) => void;
+};
+
 const initialState: User = {
   id: '',
   name: '',
@@ -12,9 +16,9 @@ const initialState: User = {
   password: '',
 };
 
-const joinStore = create<User>(set => ({
+const joinStore = create<UserField>(set => ({
   ...initialState,
-  setField: (field, value) => set({ [field]: value }),
+  setField: (field: keyof User, value: string) => set({ [field]: value }),
 }));
 
 export default joinStore;
