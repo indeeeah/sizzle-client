@@ -1,27 +1,11 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../shared/tanstackquery/tanstackQuery';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList, RouteNames } from '../../routes';
-import JoinScreen from '../screens/join';
-import { NavigationContainer } from '@react-navigation/native';
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import AppNav from './Navigation/AppNav';
 
 export default function main() {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name={RouteNames.JOIN}
-            component={JoinScreen}
-            options={{
-              headerShown: false,
-            }}
-            initialParams={{ tab: 1 }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <AppNav />
     </QueryClientProvider>
   );
 }

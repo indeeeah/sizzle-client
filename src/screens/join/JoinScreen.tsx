@@ -39,7 +39,7 @@ const PROGRESS_LIST: Progress[] = [
 
 type Props = NativeStackNavigationProp<RootStackParamList>;
 
-export default function EamilPage() {
+export default function JoinScreen() {
   const route = useRoute<JoinRouteProp>();
   const navigation = useNavigation<Props>();
 
