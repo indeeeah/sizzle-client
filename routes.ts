@@ -6,5 +6,5 @@ export const RouteNames = {
 
 export type RootStackParamList = {
   [RouteNames.HOME_TAB]: undefined;
-  [RouteNames.JOIN]: undefined;
+  [RouteNames.JOIN]: { tab: number };
 };

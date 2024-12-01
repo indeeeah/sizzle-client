@@ -16,6 +16,7 @@ export default function EamilForm({ onSubmit }: Props) {
     event: NativeSyntheticEvent<TextInputChangeEventData>,
   ) => {
     const { text } = event.nativeEvent;
+
     const isValidEmail = EMAIL_REGEX.test(text);
 
     if (isValidEmail) {

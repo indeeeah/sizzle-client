@@ -1,8 +1,10 @@
-import { create } from 'zustand';
 import { User } from '../../entities/user';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type UserField = {
-  setField: (field: keyof User, value: string) => void;
+  updateUser: (user: Partial<User>) => void;
 };
 
 const initialState: User = {
@@ -16,9 +18,26 @@ const initialState: User = {
   password: '',
 };
 
-const joinStore = create<UserField>(set => ({
-  ...initialState,
-  setField: (field: keyof User, value: string) => set({ [field]: value }),
-}));
+const joinStore = create<UserField>()(
+  persist(
+    set => ({
+      updateUser: async (value: Partial<User>) => {
+        set(state => ({
+          ...state,
+          ...initialState,
+          ...value,
+        }));
+        await AsyncStorage.setItem(
+          'userStore',
+          JSON.stringify({ ...initialState, ...value }),
+        );
+      },
+    }),
+    {
+      name: 'userStore',
+      storage: createJSONStorage(() => AsyncStorage),
+    },
+  ),
+);
 
 export default joinStore;
