@@ -5,7 +5,7 @@ import { Profile, User } from '../../entities/user';
 import EamilForm from '../../shared/join/email';
 import ProfileForm from '../../shared/join/profile';
 
-import { RouteNames } from '../../../routes';
+import { RootStackParamList, RouteNames } from '../../../routes';
 import { useLocalStorage } from '../../hooks/useStorage';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -14,10 +14,6 @@ type RouteParams = {
 };
 
 type JoinRouteProp = RouteProp<{ params: RouteParams }, 'params'>;
-
-type RootStackParamList = {
-  [RouteNames.JOIN]: { tab: ProgressTab };
-};
 
 enum ProgressTab {
   EMAIL = 1,
@@ -49,16 +45,17 @@ export default function JoinScreen() {
   const progress = PROGRESS_LIST.find(item => item.tab === currentTab);
 
   const handleEmail = (email: string) => {
-    const updatedUser = { ...storage, email };
+    const userEmail = { ...storage, email };
+    setStorage(userEmail);
+
     navigation.navigate(RouteNames.JOIN, {
       tab: ProgressTab.PROFILE,
     });
-    setStorage(updatedUser);
   };
 
   const handleProfile = (profile: Profile) => {
-    const updatedUser = { ...storage, profile: { ...profile } };
-    setStorage(updatedUser);
+    const UserProfile = { ...storage, profile: { ...profile } };
+    setStorage(UserProfile);
   };
 
   const renderComponent = (tab: ProgressTab) => {
